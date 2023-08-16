@@ -1,5 +1,5 @@
 # app_blog
-Desenvolvimento de uma API RESTful e integração com o banco de dados MySQL
+Desenvolvimento de uma API RESTful(se comunica com um servidor para acessar  manipular os dados, através dos métodos CRUD) e integração com o banco de dados MySQL.
 
 **Documentação da API de Blog**
 
