@@ -104,7 +104,7 @@ http://localhost:8081/
 
 ```json
 {
-		"email": "https://www.alura.com"
+	"email": "https://www.alura.com"
 }
 ```
 3.  **Deletar um usuário pelo ID**
@@ -132,7 +132,7 @@ http://localhost:8081/
 
 ```json
 {
-    "titulo": "Linux: o que é esse sistema operacional, como instalar e um        			  	Guia para iniciar",
+    "titulo": "Linux: o que é esse sistema operacional, como instalar e um guia para iniciar",
     "conteudo": "O Linux é uma tecnologia que se refere ao kernel...",
     "autor_id": 1
 }
@@ -144,7 +144,7 @@ http://localhost:8081/
 ```json
 {
     "id": 1,
-    "Linux: o que é esse sistema operacional, como instalar e um        			  	Guia para iniciar",
+    "titulo": "Linux: o que é esse sistema operacional, como instalar e um guia para iniciar",
     "conteudo": "O Linux é uma tecnologia que se refere ao kernel...",
     "autor_id": 1
     "data_publicacao": "2023-08-14 21:03:29",
@@ -166,7 +166,7 @@ http://localhost:8081/
 [
     {
         "id": 1,
-	    "Linux: o que é esse sistema operacional, como instalar e um        			  		Guia para iniciar",
+	    "titulo": "Linux: o que é esse sistema operacional, como instalar e um guia para iniciar",
 	    "conteudo": "O Linux é uma tecnologia que se refere ao kernel...",
 	    "autor_id": 1
 	    "data_publicacao": "2023-08-14 21:03:29",
@@ -189,7 +189,7 @@ http://localhost:8081/
 ```json
 {
     "id": 1,
-    "Linux: o que é esse sistema operacional, como instalar e um        			  		Guia para iniciar",
+   	"titulo": "Linux: o que é esse sistema operacional, como instalar e um guia para iniciar",
 	"conteudo": "O Linux é uma tecnologia que se refere ao kernel...",
 	"autor_id": 1
 	"data_publicacao": "2023-08-14 21:03:29",
@@ -210,7 +210,7 @@ http://localhost:8081/
 
 ```json
 {
-		"conteudo": "O Linux é uma tecnologia que se refere ao kernel."
+	"conteudo": "O Linux é uma tecnologia que se refere ao kernel."
 }
 ```
 3.  **Deletar um usuário pelo ID**
@@ -224,7 +224,7 @@ http://localhost:8081/
 
 ```json
 {
-		"message": "Post deletado com sucesso."
+	"message": "Post deletado com sucesso."
 }
 ```
 
