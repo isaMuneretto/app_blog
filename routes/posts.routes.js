@@ -1,12 +1,13 @@
-const express = require('express');
-const router = express.Router();
-const { QueryTypes } = require('sequelize');
-const sequelize = require("../sequelize");
-const Post = require('../model/Posts');
+const express = require('express');  //Importa funcionalidades do Express
+const router = express.Router(); //cria um roteador usando a funcionalidade do Express Router
+const { QueryTypes } = require('sequelize'); //Importa tipos de consultas do Sequelize
+const sequelize = require("../sequelize"); //Importa Sequelize
+const Post = require('../model/Posts'); //Importa a model Post
 
+// Sincroniza os modelos com o banco de dados
 sequelize.sync();
 
-//Métoo GET retorna posts com paginação e ordenação
+//Método GET retorna posts com paginação e ordenação
 router.get('/', async (req, res) => {
     try {
 
@@ -18,12 +19,34 @@ router.get('/', async (req, res) => {
                 type: sequelize.QueryTypes.SELECT
             }
         );
-        res.json({
+        res.status(200).json({
             post: results,
         });
     } catch (error) {
         res.status(500).json({
             sucess: false,
+            message: error.message,
+        });
+    }
+});
+
+//Método GET para listar todos os posts sem paginação
+router.get('/todos', async (req, res) => {
+    try {
+
+        const query = "SELECT * FROM posts ORDER BY updatedAt DESC";
+        const results = await sequelize.query(query,
+            {
+                type: QueryTypes.SELECT
+            });
+
+        res.status(200).json({
+            posts: results,
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
             message: error.message,
         });
     }
@@ -40,17 +63,10 @@ router.get('/:id', async (req, res) => {
                 type: sequelize.QueryTypes.SELECT
             }
         );
-        if (results.length === 0) {
-            res.status(404).json({
-                sucess: false,
-                message: "Post não encontrado",
-            });
-        } else {
-            res.json({
-                sucess: true,
-                post: results,
-            });
-        }
+        res.status(200).json({
+            posts: results,
+        });
+
     } catch (error) {
         res.status(500).json({
             sucess: false,
@@ -66,10 +82,12 @@ router.post('/', async (req, res) => {
         const query = `INSERT INTO posts (titulo, conteudo, autor_id, createdAt, updatedAt) VALUES (?, ?, ?, ?, ?)`;
         const replacements = [req.body.titulo, req.body.conteudo, req.body.autor_id, new Date(), new Date()];
 
-        const [results, metadata] = await sequelize.query(query, { replacements });
+        const [results, metadata] = await sequelize.query(query,
+            {
+                replacements
+            });
 
         res.status(201).json({
-            success: true,
             message: "Post criado com sucesso",
             results: results,
         });
@@ -85,20 +103,23 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
     try {
 
-        const id = req.params.id; //pega o id enviado pela requisição
+        const id = req.params.id;
         const { conteudo } = req.body; //campo a ser alterado
 
-        //altera o campo conteúdo, no registro onde o id coincidir com o id enviado
         await sequelize.query("UPDATE posts SET conteudo = ? WHERE id = ?",
             {
                 replacements: [conteudo, id],
                 type: QueryTypes.UPDATE
             });
 
-        res.status(200).json({ message: 'Post atualizado com sucesso.' }); //statusCode indica ok no update
+        res.status(200).json({ //statusCode indica ok no update
+            message: 'Post atualizado com sucesso.'
+        });
 
-    } catch (error) {
-        res.status(400).json({ msg: error.message }); //retorna status de erro e mensagens
+    } catch (error) {//retorna status de erro e mensagens
+        res.status(400).json({ 
+            msg: error.message 
+        }); 
     }
 });
 
@@ -106,18 +127,22 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     try {
 
-    const { id } = req.params; //pega o id enviado pela requisição para ser excluído
-    
+        const { id } = req.params; //pega o id enviado pela requisição para ser excluído
+
         await sequelize.query("DELETE FROM posts WHERE id = ?",
             {
                 replacements: [id],
                 type: QueryTypes.DELETE
             });
 
-        res.status(200).json({ message: 'Post deletado com sucesso.' }); //statusCode indica ok no delete
+        res.status(200).json({ //statusCode indica ok no delete
+            message: 'Post deletado com sucesso.'
+        });
 
-    } catch (error) {
-        res.status(400).json({ msg: error.message }); //retorna status de erro e mensagens
+    } catch (error) {//retorna status de erro e mensagens
+        res.status(400).json({ 
+            msg: error.message 
+        }); 
     }
 });
 

@@ -1,7 +1,11 @@
+//configurações do banco de dados estão seguras no arquivo .env para não ficarem expostas quando compartilhar o código
+
+// Importa a biblioteca Sequelize e dotenv
 const Sequelize = require("sequelize");
 const dotenv = require('dotenv');
-dotenv.config();
+dotenv.config(); //carrega as configurações do banco de dados no arquivo .env
 
+//db é uma instância (obj) do Sequelize usando as info. para a conexão com o banco de dados
 const db = new Sequelize(
     process.env.DB_NAME,
     process.env.DB_USER,
@@ -12,4 +16,5 @@ const db = new Sequelize(
     }
 );
 
+//instância é exportada
 module.exports = db
