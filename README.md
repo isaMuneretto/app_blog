@@ -108,7 +108,7 @@ http://localhost:8081/
     
 ```json
 {
-		"message:  'Usuário atualizado com sucesso.'
+		"message":  "Usuário atualizado com sucesso."
 }
 ```
 
@@ -221,7 +221,7 @@ http://localhost:8081/
 
 ```json
 {
-	"message": 'Post atualizado com sucesso.'
+	"message": "Post atualizado com sucesso."
 }
 ```
 3.  **Deletar um usuário pelo ID**
