@@ -97,16 +97,21 @@ http://localhost:8081/
 -   **URL:**  `/usuario/:id`
     
 -   **Método:**  `PUT`
-    
-
--   **Resposta de Sucesso:**
-    
-
+-   **Body:**
 ```json
 {
 	"email": "https://www.alura.com"
 }
 ```
+
+-   **Resposta de Sucesso:**
+    
+```json
+{
+		"message:  'Usuário atualizado com sucesso.'
+}
+```
+
 3.  **Deletar um usuário pelo ID**
 
 -   **URL:**  `/usuario/:id`
@@ -146,7 +151,7 @@ http://localhost:8081/
     "id": 1,
     "titulo": "Linux: o que é esse sistema operacional, como instalar e um guia para iniciar",
     "conteudo": "O Linux é uma tecnologia que se refere ao kernel...",
-    "autor_id": 1
+    "autor_id": 1,
     "data_publicacao": "2023-08-14 21:03:29",
     "data_atualizacao": "2023-08-14 21:03:29"
 }
@@ -168,7 +173,7 @@ http://localhost:8081/
         "id": 1,
 	    "titulo": "Linux: o que é esse sistema operacional, como instalar e um guia para iniciar",
 	    "conteudo": "O Linux é uma tecnologia que se refere ao kernel...",
-	    "autor_id": 1
+	    "autor_id": 1,
 	    "data_publicacao": "2023-08-14 21:03:29",
 	    "data_atualizacao": "2023-08-14 21:03:29"
     },
@@ -182,7 +187,7 @@ http://localhost:8081/
 -   **URL:**  `/post/:id`
     
 -   **Método:**  `GET`
-    
+- 
 -   **Resposta de Sucesso:**
     
 
@@ -191,7 +196,7 @@ http://localhost:8081/
     "id": 1,
    	"titulo": "Linux: o que é esse sistema operacional, como instalar e um guia para iniciar",
 	"conteudo": "O Linux é uma tecnologia que se refere ao kernel...",
-	"autor_id": 1
+	"autor_id": 1,
 	"data_publicacao": "2023-08-14 21:03:29",
 	"data_atualizacao": "2023-08-14 21:03:29"
 }
@@ -203,14 +208,20 @@ http://localhost:8081/
 -   **URL:**  `/post/:id`
     
 -   **Método:**  `PUT`
-    
+-   **Body:**
+
+```json
+{
+	"conteudo": "O Linux é uma tecnologia que se refere ao kernel."
+}
+```
 
 -   **Resposta de Sucesso:**
     
 
 ```json
 {
-	"conteudo": "O Linux é uma tecnologia que se refere ao kernel."
+	"message": 'Post atualizado com sucesso.'
 }
 ```
 3.  **Deletar um usuário pelo ID**
