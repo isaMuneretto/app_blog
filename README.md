@@ -112,7 +112,7 @@ http://localhost:8081/
 }
 ```
 
-3.  **Deletar um usuário pelo ID**
+3.  **Deletar um post pelo ID**
 
 -   **URL:**  `/usuario/:id`
     
